@@ -1,3 +1,40 @@
-.accordion{
-  // blah blah blah
+// accordion component
+
+.accordion {
+  .accordion__head,
+  .accordion__body{
+    border-radius: 8px;
+    padding: 22px 52px 22px 22px;
+    border: 3px solid black;
+    margin-bottom: 10px;
+  }
+  .accordion__head{
+    font-size: 1.125em;
+    position: relative;
+
+    &:hover, &:focus{
+      cursor: pointer;
+    }
+
+    // -
+    &:after{
+      width: 20px;
+      height: 3px;
+      right: 19px;
+    }
+    // |
+    &:before{
+      width: 3px;
+      height: 20px;
+      right: 27px;
+      margin-top: -8px;
+    }
+    
+    &:after, &:before{
+      position: absolute;
+      background-color: black;
+      content: '';
+      top: 50%;
+    }
+  }
 }
