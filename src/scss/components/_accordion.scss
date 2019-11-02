@@ -1,6 +1,9 @@
 // accordion component
 
 .accordion {
+  overflow: hidden;
+  margin-bottom: 10px; 
+
   .accordion__head,
   .accordion__body{
     border-radius: 8px;
@@ -11,6 +14,9 @@
   .accordion__head{
     font-size: 1.125em;
     position: relative;
+    font-weight: lighter;
+    z-index: 2;
+    background-color: white;
 
     &:hover, &:focus{
       cursor: pointer;
@@ -35,6 +41,19 @@
       background-color: black;
       content: '';
       top: 50%;
+    }
+  }
+
+  .accordion__body{
+    transform: translateY(-100%) scale(.95);
+    background-color: gray;
+    transition: all 0.5s ease;
+    z-index: 1;
+  }
+  &.active{
+    .accordion__body{
+      transform: translateY(0) scale(1);
+      background-color: white;
     }
   }
 }
