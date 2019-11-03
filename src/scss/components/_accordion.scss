@@ -13,11 +13,17 @@
     margin-bottom: 10px;
   }
   .accordion__head{
-    font-size: 1.125em;
     position: relative;
     font-weight: lighter;
     z-index: 2;
     background-color: white;
+    display: block;
+
+    transition: all 0.5s $ease;
+
+    h3{
+      font-size: 1.125em;
+    }
 
     .plus{
       position: absolute;
@@ -32,8 +38,14 @@
         transition: all 0.5s $ease;
       }
     }
-
-    &:hover, &:focus{
+    &:focus{
+      outline: 0
+    }
+    &:focus:not(:hover){
+      padding-left: 32px;
+      transition: all 0.2s $ease;
+    }
+    &:hover{
       cursor: pointer;
     }
     &:active {

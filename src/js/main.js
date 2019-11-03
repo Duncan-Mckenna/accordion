@@ -22,13 +22,19 @@ const accordionItems = document.querySelectorAll('.accordion'),
 accordionItems.forEach(function(accordion) {
   const accordionFirstEl = accordion.firstElementChild;
   accordionFirstEl.addEventListener('click', toggleAccordion);
+  accordionFirstEl.addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode === 13) {
+      toggleAccordion(event);
+    }
+  });
   accordion.style.height = accordion.firstElementChild.offsetHeight + 'px'
 });
 
-function toggleAccordion(el){
+function toggleAccordion(event){
   // loop through each accordion and toggle .active
   accordionContentPanes.forEach(function(accordion) {
-    var selected = accordion.previousElementSibling === el.target,
+    var selected = accordion.previousElementSibling === event.target,
       current = accordion.parentElement.classList.contains('active');
 
     if (selected && !current) {
