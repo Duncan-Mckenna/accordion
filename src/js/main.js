@@ -47,12 +47,12 @@ if (document.querySelector('.accordion')){
 
     function closeAccordion(acc){
       removeClass(acc.parentElement, 'active');
-      // acc.previousElementSibling.setAttribute('aria-expanded', 'false');
+      acc.previousElementSibling.setAttribute('aria-expanded', 'false');
       acc.parentElement.style.height = acc.previousElementSibling.offsetHeight + 'px';
     }
     function openAccordion(acc){
       addClass(acc.parentElement, 'active');
-      // acc.previousElementSibling.setAttribute('aria-expanded', 'true');
+      acc.previousElementSibling.setAttribute('aria-expanded', 'true');
       acc.parentElement.style.height = acc.parentElement.offsetHeight + acc.offsetHeight + 10 + 'px';
     }
   } 
