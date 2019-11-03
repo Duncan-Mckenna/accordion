@@ -3,6 +3,7 @@
 .accordion {
   overflow: hidden;
   margin-bottom: 10px; 
+  transition: all 0.5s $ease;
 
   .accordion__head,
   .accordion__body{
@@ -18,42 +19,63 @@
     z-index: 2;
     background-color: white;
 
+    .plus{
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      margin-top: -12px;
+      transform: scale(1)  rotate(0);
+      transition: all 0.5s $ease;
+
+      .bar{
+        opacity: 0;
+        transition: all 0.5s $ease;
+      }
+    }
+
     &:hover, &:focus{
       cursor: pointer;
     }
-
-    // -
-    &:after{
-      width: 20px;
-      height: 3px;
-      right: 19px;
-    }
-    // |
-    &:before{
-      width: 3px;
-      height: 20px;
-      right: 27px;
-      margin-top: -8px;
-    }
-    
-    &:after, &:before{
-      position: absolute;
-      background-color: black;
-      content: '';
-      top: 50%;
+    &:active {
+      .plus {
+        transform: scale(.75) rotate(0);
+        transition: all 0.1s $ease;
+      }
     }
   }
 
   .accordion__body{
-    transform: translateY(-100%) scale(.95);
+    transform: translateY(-105%) scale(.95);
     background-color: gray;
-    transition: all 0.5s ease;
+    transition: all 0.3s $ease;
     z-index: 1;
+    font-size: .875rem;
   }
   &.active{
+    transition: all 0.3s $ease;
+
+    .accordion__head{
+      .plus {
+        transform: scale(1) rotate(.25turn);
+        transition: all 0.5s $ease;
+
+        .bar{
+          opacity: 1;
+        }
+      }
+
+      &:active {
+        .plus {
+          transform: scale(.75) rotate(.25turn);
+          transition: all 0.1s $ease;
+        }
+      }
+    }
+
     .accordion__body{
       transform: translateY(0) scale(1);
       background-color: white;
+      transition: all 0.6s $ease;
     }
   }
 }

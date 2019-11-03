@@ -15,8 +15,6 @@ function toggleClass(el, theClass) {
 }
 
 
-
-
 const accordionItems = document.querySelectorAll('.accordion'), 
   accordionContentPanes = document.querySelectorAll('.accordion__body');
 
@@ -24,14 +22,28 @@ const accordionItems = document.querySelectorAll('.accordion'),
 accordionItems.forEach(function(accordion) {
   const accordionFirstEl = accordion.firstElementChild;
   accordionFirstEl.addEventListener('click', toggleAccordion);
+  accordion.style.height = accordion.firstElementChild.offsetHeight + 'px'
 });
 
 function toggleAccordion(el){
+  // loop through each accordion and toggle .active
   accordionContentPanes.forEach(function(accordion) {
-    if (accordion.previousElementSibling === el.target) {
-      toggleClass(accordion.parentElement, 'active');
+    var selected = accordion.previousElementSibling === el.target,
+      current = accordion.parentElement.classList.contains('active');
+
+    if (selected && !current) {
+      openAccordion(accordion);
     } else {
-      removeClass(accordion.parentElement, 'active');
+      closeAccordion(accordion);
     }
   });
+
+  function closeAccordion(acc){
+    removeClass(acc.parentElement, 'active');
+    acc.parentElement.style.height = acc.previousElementSibling.offsetHeight + 'px';
+  }
+  function openAccordion(acc){
+    addClass(acc.parentElement, 'active');
+    acc.parentElement.style.height = acc.parentElement.offsetHeight + acc.offsetHeight + 10 + 'px';
+  }
 }

@@ -1,0 +1,5 @@
+// nicer animation curves
+
+$ease:                              cubic-bezier(.5,0,.5,1);
+$ease-in:                           cubic-bezier(.45,0,.75,0);
+$ease-out:                          cubic-bezier(.25,.65,.45,1);
