@@ -41,10 +41,6 @@
     &:focus{
       outline: 0
     }
-    &:focus:not(:hover){
-      padding-left: 32px;
-      transition: all 0.2s $ease;
-    }
     &:hover{
       cursor: pointer;
     }
